@@ -26,4 +26,7 @@ env/
 
 # Specific problematic files
 **/next-swc.linux-x64-gnu.node
-**/next-swc.linux-x64-musl.node 
+**/next-swc.linux-x64-musl.node
+**/.next/cache/
+**/.next/cache/webpack/
+**/*.pack 
