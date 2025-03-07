@@ -16,3 +16,9 @@ dist/
 
 # OS files
 .DS_Store 
+
+# Python virtual environment
+venv/
+env/
+.env/
+.venv/ 
