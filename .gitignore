@@ -1,7 +1,8 @@
 # Node modules
 node_modules/
-.next/
-.cache/
+*/node_modules/
+**/.next/
+**/.cache/
 
 # Build files
 build/
@@ -21,4 +22,8 @@ dist/
 venv/
 env/
 .env/
-.venv/ 
+.venv/
+
+# Specific problematic files
+**/next-swc.linux-x64-gnu.node
+**/next-swc.linux-x64-musl.node 
