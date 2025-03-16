@@ -23,7 +23,7 @@ DroneX is a web-based platform for managing drone deliveries. It features a real
 1. Navigate to the backend directory: 
 cd backend
 source venv/bin/activate 
-pip install -r requirements.txt (if encounter error, use python 3.10)
+
 
 
 ### Frontend Setup
