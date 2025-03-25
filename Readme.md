@@ -6,8 +6,9 @@ DroneX is a web-based platform for managing drone deliveries. It features a real
 
 - Interactive map showing drone locations and status
 - Real-time updates of drone positions and battery levels
-- User information panel
-- Order planning system
+- User information panel 
+- Order planning system *
+- login/logout *
 
 ## Prerequisites (Use UV Package manager for installation)
 
