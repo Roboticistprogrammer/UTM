@@ -9,45 +9,28 @@ DroneX is a web-based platform for managing drone deliveries. It features a real
 - User information panel
 - Order planning system
 
-## Prerequisites
+## Prerequisites (Use UV Package manager for installation)
 
 - Node.js (v20.x or later)
-- Python (v3.9 or later)
+- Python (v3.9)
 - npm (usually comes with Node.js)
-- pip (Python package manager)
-
-## Installation
-
-### Backend Setup
-
-1. Navigate to the backend directory: 
-cd backend
-source venv/bin/activate 
-
-
+- UV (Python package manager)
 
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
-cd DroneX-Frontend
-npm install
 
-
-## Running the Application
-
-### Start the Backend Server
-
-1. From the backend directory with activated virtual environment:
-python app.py
-
-The backend server will start on http://localhost:5000
-
-### Start the Frontend Development Server
-
-1. From the DroneX-Frontend directory:
 npm run dev
 
 The frontend will be available at http://localhost:3000
+
+### Start the Backend Server
+
+1. From the backend directory:
+python app.py 
+*UV will automatically create and activate virtual environment but make sure to check.
+
+The backend server will start on http://localhost:5000
 
 ## Testing the API
 
@@ -63,4 +46,3 @@ Returns a list of drones with their current status and location
 3. Test the user endpoint:http://localhost:5000/api/user
 Returns user information and recent orders
 
-## Project Structure
