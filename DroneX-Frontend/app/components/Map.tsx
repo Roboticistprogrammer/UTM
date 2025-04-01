@@ -22,26 +22,55 @@ const droneIcon = new L.Icon({
   popupAnchor: [0, -16],
 });
 
+// Define a type for the drone objects
+type Drone = {
+  id: number;
+  lat: number;
+  lon: number;
+  status: string;
+  battery: number;
+};
+
 function Map() {
-  const [drones, setDrones] = useState([]);
-  const [error, setError] = useState(null);
+  const [drones, setDrones] = useState<Drone[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false); // Track if the component is mounted on the client
 
   useEffect(() => {
+    setIsClient(true); // Set to true when the component mounts on the client
+
     const loadDrones = async () => {
       try {
         const data = await fetchDrones();
         setDrones(data);
       } catch (err) {
-        setError(err.message);
+        setError((err as Error).message);
         console.error('Failed to fetch drones:', err);
+      } finally {
+        setLoading(false);
       }
     };
 
     loadDrones();
-    const interval = setInterval(loadDrones, 5000); // Update every 5 seconds
+    const interval = setInterval(loadDrones, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
+
+  if (loading) {
+    return <div className="w-full h-full flex items-center justify-center">Loading map...</div>;
+  }
+
+  if (error) {
+    return <div className="w-full h-full flex items-center justify-center text-red-500">Error: {error}</div>;
+  }
+
+  if (!isClient) {
+    return null; // Prevent server-side rendering of the map
+  }
 
   return (
     <div className="w-full h-full relative">
@@ -84,4 +113,4 @@ function Map() {
   );
 }
 
-export default Map; 
+export default Map;
