@@ -74,3 +74,6 @@ curl http://localhost:5000/api/user
 ```
 Returns user information and recent orders.
 
+##Features 
+
+-While hovering mouse on a drone, servicable area should be mapped on color.
