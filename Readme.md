@@ -14,7 +14,7 @@ When prompted, select these options:
 cd dronex-platform
 
 npm install mapbox-gl framer-motion lucide-react
-
+npm install --save-dev @types/next
 npm run dev
 
 Open your browser and navigate to `http://localhost:3000`
