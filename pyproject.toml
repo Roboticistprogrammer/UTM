@@ -7,4 +7,5 @@ requires-python = ">=3.9"
 dependencies = [
     "flask>=3.1.0",
     "flask-cors>=5.0.1",
+    "npm>=0.1.1",
 ]

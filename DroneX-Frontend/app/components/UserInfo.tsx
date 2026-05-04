@@ -26,16 +26,38 @@ const simulatedUser: User = {
 }
 
 function UserInfo() {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     setTimeout(() => {
-      setUser(simulatedUser)
-    }, 500)
-  }, [])
+      setUser(simulatedUser);
+      setIsLoading(false); // Set loading to false after data is loaded
+    }, 500);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+          <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+        </div>
+        <div>
+          <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
+          <ul className="space-y-2">
+            <li className="h-4 bg-gray-200 rounded w-full"></li>
+            <li className="h-4 bg-gray-200 rounded w-full"></li>
+            <li className="h-4 bg-gray-200 rounded w-full"></li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
 
   if (!user) {
-    return <div className="py-2">Loading user data...</div>
+    return <div className="text-red-500">Error: User data is not available.</div>;
   }
 
   return (
@@ -58,11 +80,17 @@ function UserInfo() {
             {user.recentOrders.map((order) => (
               <li key={order.id} className="flex justify-between text-sm">
                 <span>Order #{order.id}</span>
-                <span className={
-                  order.status === "Delivered" ? "text-green-600" :
-                  order.status === "In Transit" ? "text-blue-600" :
-                  "text-yellow-600"
-                }>{order.status}</span>
+                <span
+                  className={
+                    order.status === "Delivered"
+                      ? "text-green-600"
+                      : order.status === "In Transit"
+                      ? "text-blue-600"
+                      : "text-yellow-600"
+                  }
+                >
+                  {order.status}
+                </span>
               </li>
             ))}
           </ul>
@@ -71,9 +99,9 @@ function UserInfo() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default UserInfo
+export default UserInfo;
 
 
